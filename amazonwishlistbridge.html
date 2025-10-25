@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Sandwich Project - Feed a Child, Change a Life</title>
+    <title>Help End Weekend Hunger - The Sandwich Project</title>
+    <meta name="description" content="Support Atlanta families facing food insecurity. Shop our Amazon wishlist to provide nutritious weekend meals for children who depend on school meals.">
+    <meta property="og:title" content="Every Child Deserves a Full Weekend - The Sandwich Project">
+    <meta property="og:description" content="Help us fill the 72-hour gap between Friday's school lunch and Monday's breakfast for Metro Atlanta families.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nicunursekatie.github.io/TSPamazonwishes/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
     <style>
         * {
             margin: 0;
@@ -461,18 +468,18 @@
     <!-- Hero Section - FEEL -->
     <section class="hero">
         <div class="container">
-            <h1>Feed a Child. Change a Life.</h1>
-            <p class="tagline">Bridge the weekend hunger gap for Atlanta families</p>
+            <h1>Every Child Deserves a Full Weekend</h1>
+            <p class="tagline">Help us fill the 72-hour gap between Friday's school lunch and Monday's breakfast</p>
             
             <div class="credibility">
-                <span>✓ 501(c)(3) Nonprofit</span>
-                <span>📍 Metro Atlanta</span>
-                <span>🛡️ EIN: 87-0939484</span>
+                <span>• 501(c)(3) Tax-Exempt Nonprofit</span>
+                <span>• Serving Metro Atlanta Since 2020</span>
+                <span>• EIN: 87-0939484</span>
             </div>
 
             <div class="proof-counter">
-                <div class="counter-number" id="counter">2.1M</div>
-                <div class="counter-text">sandwiches delivered since 2020</div>
+                <div class="counter-number" id="counter">75,000+</div>
+                <div class="counter-text">weekend meals provided to Atlanta families</div>
             </div>
 
             <a href="#action" class="hero-cta">Start Feeding Families →</a>
@@ -507,8 +514,8 @@
             </div>
 
             <div class="bridge-message">
-                <h3>Your wishlist gifts turn grocery costs into ready-to-eat meals for local families</h3>
-                <p>Every item ships directly to our Atlanta facility where volunteers pack and deliver weekend food bags</p>
+                <h3>Your Amazon purchase becomes a weekend lifeline</h3>
+                <p>Items ship directly to our facility where volunteers pack nutritious bags delivered to families every Friday. No middleman, no overhead—just direct impact.</p>
             </div>
         </div>
     </section>
@@ -520,7 +527,7 @@
                 <h2 style="color: var(--primary-blue); margin-bottom: 30px;">Ready to Make a Difference?</h2>
                 
                 <a href="https://www.amazon.com/hz/wishlist/ls/XRSQ9EDIIIWV?ref_=wl_share" target="_blank" class="amazon-btn">
-                    🛒 Shop Our Amazon Wishlist →
+                    Start Feeding Families →
                 </a>
                 
                 <p class="reassurance">
@@ -536,25 +543,25 @@
                     <div class="item-card">
                         <div class="item-icon"><img src="protein.png" alt="Protein" style="width: 2.5rem; height: 2.5rem;"></div>
                         <div class="item-name">Protein Snacks</div>
-                        <div class="item-impact">Fuel kids and families with shelf-stable energy sources that travel well.</div>
-                        <div class="item-examples">→ Examples: Zbars, Clif Bars, Meat Sticks</div>
-                        <a href="#" class="item-btn">View on Amazon</a>
+                        <div class="item-impact">High-protein fuel that keeps kids satisfied longer.</div>
+                        <div class="item-examples">→ Examples: Zbars, Clif Bars, Jack Link's</div>
+                        <a href="https://www.amazon.com/hz/wishlist/ls/XRSQ9EDIIIWV?ref_=wl_share" class="item-btn">Shop Protein Items</a>
                     </div>
 
                     <div class="item-card">
-                        <div class="item-icon">🍓</div>
+                        <div class="item-icon">�</div>
                         <div class="item-name">Fruit Cups & Pouches</div>
-                        <div class="item-impact">Provide healthy, ready-to-eat sides that brighten every meal.</div>
-                        <div class="item-examples">→ Examples: Dole Cups, GoGo Squeez</div>
-                        <a href="#" class="item-btn">View on Amazon</a>
+                        <div class="item-impact">Nutritious, shelf-stable fruit that kids actually want to eat.</div>
+                        <div class="item-examples">→ Examples: Dole Cups, GoGo Squeez, Del Monte</div>
+                        <a href="https://www.amazon.com/hz/wishlist/ls/XRSQ9EDIIIWV?ref_=wl_share" class="item-btn">Shop Fruit Items</a>
                     </div>
 
                     <div class="item-card">
-                        <div class="item-icon">🌅</div>
+                        <div class="item-icon">�</div>
                         <div class="item-name">Granola & Breakfast Bars</div>
-                        <div class="item-impact">Offer quick nutrition for mornings and on-the-go families.</div>
-                        <div class="item-examples">→ Examples: Nature Valley, Nutri-Grain</div>
-                        <a href="#" class="item-btn">View on Amazon</a>
+                        <div class="item-impact">Energy-packed nutrition that travels well in backpacks.</div>
+                        <div class="item-examples">→ Examples: Nature Valley, Nutri-Grain, Zbars</div>
+                        <a href="https://www.amazon.com/hz/wishlist/ls/XRSQ9EDIIIWV?ref_=wl_share" class="item-btn">Shop Granola Items</a>
                     </div>
                 </div>
             </div>
@@ -615,7 +622,7 @@
         // Animate counter on page load
         function animateCounter() {
             const counter = document.getElementById('counter');
-            const target = 2100000;
+            const target = 75000;
             const duration = 2000;
             const step = target / (duration / 16);
             let current = 0;
@@ -623,10 +630,10 @@
             const updateCounter = () => {
                 current += step;
                 if (current < target) {
-                    counter.textContent = (current / 1000000).toFixed(1) + 'M';
+                    counter.textContent = Math.floor(current).toLocaleString() + '+';
                     requestAnimationFrame(updateCounter);
                 } else {
-                    counter.textContent = '2.1M';
+                    counter.textContent = '75,000+';
                 }
             };
 
