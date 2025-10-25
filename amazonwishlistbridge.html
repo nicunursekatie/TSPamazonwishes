@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sandwich Project - Feed a Child, Change a Life</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #236383;
+            --accent-orange: #FBAD3F;
+            --teal: #007E8C;
+            --light-blue: #47B3CB;
+            --burgundy: #A31C41;
+            --text-dark: #2c2c2c;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section - FEEL */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--teal) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, -30px) rotate(180deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .credibility {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .credibility span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .proof-counter {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px 30px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .counter-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-orange);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .counter-text {
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        .hero-cta {
+            background: var(--accent-orange);
+            color: var(--primary-blue);
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(251, 173, 63, 0.4);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(251, 173, 63, 0.5);
+            background: #ffb54a;
+        }
+
+        /* Impact Section - SEE */
+        .impact-section {
+            padding: 80px 20px;
+            background: var(--bg-light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .impact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+
+        .impact-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+
+        .impact-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .impact-icon.full-graphic {
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+            border-radius: 0;
+            background: transparent;
+        }
+
+        .icon-need { background: rgba(163, 28, 65, 0.1); color: var(--burgundy); }
+        .icon-gap { background: rgba(251, 173, 63, 0.1); color: var(--accent-orange); }
+        .icon-fix { background: rgba(71, 179, 203, 0.1); color: var(--light-blue); }
+
+        .impact-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .impact-stat {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--teal);
+            margin-bottom: 10px;
+        }
+
+        .impact-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .bridge-message {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-left: 4px solid var(--accent-orange);
+            margin: 40px auto;
+            max-width: 800px;
+            border-radius: 8px;
+        }
+
+        .bridge-message h3 {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Action Section - DO */
+        .action-section {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .action-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .primary-action {
+            margin-bottom: 50px;
+        }
+
+        .amazon-btn {
+            background: #FF9900;
+            color: #232F3E;
+            padding: 20px 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .amazon-btn:hover {
+            background: #FFB84D;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .reassurance {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-top: 15px;
+        }
+
+        .reassurance strong {
+            color: var(--teal);
+        }
+
+        .featured-items {
+            margin-top: 50px;
+        }
+
+        .featured-header {
+            font-size: 1.3rem;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+        }
+
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .item-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .item-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .item-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .item-name {
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+
+        .item-impact {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .item-btn {
+            background: var(--light-blue);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .item-btn:hover {
+            background: var(--teal);
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 80px 20px;
+            background: var(--bg-light);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 auto 15px;
+        }
+
+        .step h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-blue);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-info {
+            margin-bottom: 20px;
+        }
+
+        .footer-info p {
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .main-site-link {
+            color: var(--accent-orange);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .main-site-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .impact-grid,
+            .items-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .amazon-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .credibility {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+
+        /* Loading animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .loading {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section - FEEL -->
+    <section class="hero">
+        <div class="container">
+            <h1>Feed a Child. Change a Life.</h1>
+            <p class="tagline">Bridge the weekend hunger gap for Atlanta families</p>
+            
+            <div class="credibility">
+                <span>✓ 501(c)(3) Nonprofit</span>
+                <span>📍 Metro Atlanta</span>
+                <span>🛡️ EIN: 88-1234567</span>
+            </div>
+
+            <div class="proof-counter">
+                <div class="counter-number" id="counter">2.1M</div>
+                <div class="counter-text">sandwiches delivered since 2020</div>
+            </div>
+
+            <a href="#action" class="hero-cta">Start Feeding Families →</a>
+        </div>
+    </section>
+
+    <!-- Impact Section - SEE -->
+    <section class="impact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Your Help Matters</h2>
+                <p>We bridge the gap between need and nourishment with simple, direct action</p>
+            </div>
+
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-icon icon-need full-graphic"><img src="1in6.png" alt="1 in 6 children face food insecurity"></div>
+                </div>
+
+                <div class="impact-card">
+                    <h3>The Gap</h3>
+                    <img src="72 hours.png" alt="72 hours" style="width: 100%; max-width: 200px; margin: 20px auto; display: block;">
+                    <p>between Friday's school lunch and Monday's breakfast for many kids who depend on school meals</p>
+                </div>
+
+                <div class="impact-card">
+                    <h3>Your Impact</h3>
+                    <img src="impact.png" alt="Your Impact" style="width: 100%; max-width: 200px; margin: 20px auto; display: block;">
+                    <p><strong>Every wishlist item helps close the gap in food access.</strong></p>
+                    <p>Simple snacks, fruit, and staples become nourishment for families who might otherwise go without.</p>
+                </div>
+            </div>
+
+            <div class="bridge-message">
+                <h3>Your wishlist gifts turn grocery costs into ready-to-eat meals for local families</h3>
+                <p>Every item ships directly to our Atlanta facility where volunteers pack and deliver weekend food bags</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Action Section - DO -->
+    <section class="action-section" id="action">
+        <div class="action-container">
+            <div class="primary-action">
+                <h2 style="color: var(--primary-blue); margin-bottom: 30px;">Ready to Make a Difference?</h2>
+                
+                <a href="https://www.amazon.com/hz/wishlist/ls/YOURID" target="_blank" class="amazon-btn">
+                    🛒 Shop Our Amazon Wishlist →
+                </a>
+                
+                <p class="reassurance">
+                    <strong>Ships directly to our Atlanta drop site</strong><br>
+                    No signup, no middleman — Amazon handles checkout<br>
+                    <small>You'll see "The Sandwich Project" as the shipping address</small>
+                </p>
+            </div>
+
+            <div class="featured-items">
+                <h3 class="featured-header">Popular Items That Make an Impact</h3>
+                <div class="items-grid">
+                    <div class="item-card">
+                        <div class="item-icon">💪</div>
+                        <div class="item-name">Protein Snacks</div>
+                        <div class="item-impact">Fuel kids and families with shelf-stable energy sources that travel well.</div>
+                        <div class="item-examples">→ Examples: Zbars, Clif Bars, Meat Sticks</div>
+                        <a href="#" class="item-btn">View on Amazon</a>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-icon">🍓</div>
+                        <div class="item-name">Fruit Cups & Pouches</div>
+                        <div class="item-impact">Provide healthy, ready-to-eat sides that brighten every meal.</div>
+                        <div class="item-examples">→ Examples: Dole Cups, GoGo Squeez</div>
+                        <a href="#" class="item-btn">View on Amazon</a>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-icon">🌅</div>
+                        <div class="item-name">Granola & Breakfast Bars</div>
+                        <div class="item-impact">Offer quick nutrition for mornings and on-the-go families.</div>
+                        <div class="item-examples">→ Examples: Nature Valley, Nutri-Grain</div>
+                        <a href="#" class="item-btn">View on Amazon</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Happens Next</h2>
+                <p>Your gift's journey from wishlist to weekend meals</p>
+            </div>
+
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>You Shop</h4>
+                    <p>Select items from our wishlist — they ship directly to our facility</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>We Pack</h4>
+                    <p>Volunteers assemble weekend food bags with your donated items</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Kids Eat</h4>
+                    <p>Bags delivered to schools and community centers every Friday</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-info">
+            <p><strong>The Sandwich Project</strong></p>
+            <p>EIN: 88-1234567 | 501(c)(3) Tax-Exempt Organization</p>
+            <p>123 Main Street, Atlanta, GA 30303</p>
+            <p style="margin-top: 15px;">
+                <a href="https://sandwichproject.org" class="main-site-link">Visit our main website →</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for CTA button
+        document.querySelector('.hero-cta').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('action').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        });
+
+        // Animate counter on page load
+        function animateCounter() {
+            const counter = document.getElementById('counter');
+            const target = 2100000;
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+
+            const updateCounter = () => {
+                current += step;
+                if (current < target) {
+                    counter.textContent = (current / 1000000).toFixed(1) + 'M';
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = '2.1M';
+                }
+            };
+
+            setTimeout(updateCounter, 500);
+        }
+
+        // Intersection Observer for fade-in effects
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.impact-card, .item-card, .step').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize counter animation when visible
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter();
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        counterObserver.observe(document.querySelector('.proof-counter'));
+    </script>
+</body>
+</html>

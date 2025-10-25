@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support The Sandwich Project | Donation Wishlist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: #236383;
+            color: white;
+            padding: 2rem 1rem 3rem;
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 400px;
+            height: auto;
+            margin: 0 auto 1.5rem;
+            display: block;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Impact Section */
+        .impact-section {
+            background: white;
+            margin: -2rem auto 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-width: 1200px;
+        }
+
+        .impact-header {
+            background: linear-gradient(135deg, #007E8C, #47B3CB);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .impact-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+        }
+
+        .impact-stat {
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border-right: 1px solid #eee;
+            transition: background 0.2s;
+        }
+
+        .impact-stat:last-child {
+            border-right: none;
+        }
+
+        .impact-stat:hover {
+            background: #f8f8f8;
+        }
+
+        .impact-stat .icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .impact-stat .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #236383;
+            display: block;
+            line-height: 1;
+        }
+
+        .impact-stat .label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Build a Lunch Section */
+        .build-lunch {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .build-lunch h2 {
+            color: #236383;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .build-lunch-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .lunch-builder {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .lunch-slot {
+            background: #f8f8f8;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lunch-slot:hover {
+            border-color: #FBAD3F;
+            background: #fff9f0;
+        }
+
+        .lunch-slot.filled {
+            border-style: solid;
+            border-color: #47B3CB;
+            background: white;
+        }
+
+        .lunch-slot .icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .lunch-slot .label {
+            font-weight: 600;
+            color: #236383;
+            font-size: 0.9rem;
+        }
+
+        .lunch-impact {
+            background: linear-gradient(135deg, #FBAD3F, #e99d2d);
+            color: #333;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Category Filters */
+        .filters {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid #236383;
+            color: #236383;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover {
+            background: #236383;
+            color: white;
+        }
+
+        .filter-btn.active {
+            background: #236383;
+            color: white;
+        }
+
+        /* Priority Section */
+        .priority-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            color: #236383;
+            font-size: 1.5rem;
+        }
+
+        .section-badge {
+            background: #A31C41;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Item Grid */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .item-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .item-card.hidden {
+            display: none;
+        }
+
+        .item-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            padding: 1rem;
+            background: #fafafa;
+        }
+
+        .item-content {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #236383;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .item-badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.75rem;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-priority {
+            background: #A31C41;
+            color: white;
+        }
+
+        .badge-needs {
+            background: #FBAD3F;
+            color: #333;
+        }
+
+        .badge-category {
+            background: #47B3CB;
+            color: white;
+        }
+
+        .item-price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #236383;
+            margin: 0.75rem 0;
+        }
+
+        .item-button {
+            background: #FBAD3F;
+            color: #333;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            transition: background 0.2s;
+            margin-top: auto;
+        }
+
+        .item-button:hover {
+            background: #e99d2d;
+        }
+
+        /* Footer */
+        .footer {
+            background: #236383;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer a {
+            color: #FBAD3F;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                max-width: 300px;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .impact-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-stat {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+
+            .impact-stat:last-child {
+                border-bottom: none;
+            }
+
+            .lunch-builder {
+                grid-template-columns: 1fr;
+            }
+
+            .items-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="The Sandwich Project" class="logo" id="logo">
+        <div class="tagline">Feed a child. Change a life.</div>
+        <div class="subtitle">Every donation provides nutritious meals for Metro Atlanta families facing food insecurity</div>
+    </div>
+
+    <div class="container">
+        <!-- Impact Section -->
+        <div class="impact-section">
+            <div class="impact-header">
+                <h2>Your Impact in Numbers</h2>
+            </div>
+            <div class="impact-stats">
+                <div class="impact-stat">
+                    <span class="icon">🍎</span>
+                    <span class="number">1M+</span>
+                    <span class="label">Georgia kids need food</span>
+                </div>
+                <div class="impact-stat">
+                    <span class="icon">🥪</span>
+                    <span class="number">Weekly</span>
+                    <span class="label">Fresh sandwiches made</span>
+                </div>
+                <div class="impact-stat">
+                    <span class="icon">💪</span>
+                    <span class="number">100%</span>
+                    <span class="label">Volunteer-powered</span>
+                </div>
+                <div class="impact-stat">
+                    <span class="icon">📦</span>
+                    <span class="number">Direct</span>
+                    <span class="label">Donations = Meals</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Build a Lunch -->
+        <div class="build-lunch">
+            <h2>🍱 Build a Complete Lunch</h2>
+            <p class="build-lunch-subtitle">Click categories below to explore what goes into a nutritious meal</p>
+            <div class="lunch-builder">
+                <div class="lunch-slot" data-category="protein">
+                    <span class="icon">💪</span>
+                    <span class="label">Protein Bar</span>
+                </div>
+                <div class="lunch-slot" data-category="fruit">
+                    <span class="icon">🍎</span>
+                    <span class="label">Fruit Cup</span>
+                </div>
+                <div class="lunch-slot" data-category="granola">
+                    <span class="icon">🌾</span>
+                    <span class="label">Granola Bar</span>
+                </div>
+                <div class="lunch-slot" data-category="applesauce">
+                    <span class="icon">🍏</span>
+                    <span class="label">Applesauce</span>
+                </div>
+            </div>
+            <div class="lunch-impact">
+                💙 One complete lunch = One less hungry child
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All Items</button>
+            <button class="filter-btn" data-filter="protein">💪 Protein Bars</button>
+            <button class="filter-btn" data-filter="fruit">🍎 Fruit Cups</button>
+            <button class="filter-btn" data-filter="granola">🌾 Granola Bars</button>
+            <button class="filter-btn" data-filter="applesauce">🍏 Applesauce</button>
+            <button class="filter-btn" data-filter="supplies">📦 Supplies</button>
+        </div>
+
+        <!-- Highest Priority Items -->
+        <div class="priority-section">
+            <div class="section-header">
+                <h2>⚡ Highest Priority</h2>
+                <span class="section-badge">MOST URGENT</span>
+            </div>
+            <div class="items-grid" id="highest-priority"></div>
+        </div>
+
+        <!-- Running Low -->
+        <div class="priority-section">
+            <div class="section-header">
+                <h2>📊 Running Low</h2>
+                <span class="section-badge" style="background: #FBAD3F; color: #333;">HIGH QUANTITY NEEDS</span>
+            </div>
+            <div class="items-grid" id="running-low"></div>
+        </div>
+
+        <!-- All Items -->
+        <div class="priority-section">
+            <div class="section-header">
+                <h2>📋 All Donation Items</h2>
+            </div>
+            <div class="items-grid" id="all-items"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>The Sandwich Project</strong> | 501(c)(3) Non-Profit Organization</p>
+        <p style="margin-top: 0.5rem;">Learn more at <a href="https://www.thesandwichproject.org" target="_blank">thesandwichproject.org</a></p>
+    </div>
+
+    <script>
+        // Load logo
+        const logoImg = document.getElementById('logo');
+        logoImg.src = 'LOGOS/TSP_reverse_transparent.png';
+
+        // Wishlist data with categories
+        const wishlistItems = [
+            {
+                name: "Jack Link's Meat Sticks Variety Pack, Original, Teriyaki, and Barbecue Pork - 20 Count",
+                price: 20.65,
+                priority: "highest",
+                needs: 75,
+                category: "protein",
+                image: "https://m.media-amazon.com/images/I/81qWKJ6KFUL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HYIXU"
+            },
+            {
+                name: "Nature Valley Sweet and Salty Nut Granola Bars, Variety Pack, 24 Bars",
+                price: 10.68,
+                priority: "high",
+                needs: 75,
+                category: "granola",
+                image: "https://m.media-amazon.com/images/I/81qGvL3GJGL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HVCGE"
+            },
+            {
+                name: "Nutri-Grain Soft Baked Breakfast Bars, Kids Snacks, Whole Grain, Variety Pack (4 Boxes, 32 Count)",
+                price: 16.99,
+                priority: "high",
+                needs: 75,
+                category: "granola",
+                image: "https://m.media-amazon.com/images/I/81qWM8SHFUL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HYIXA"
+            },
+            {
+                name: "Zbar - Chocolate Chip - Soft-Baked Energy Snack Bars - 24 Pack",
+                price: 18.99,
+                priority: "high",
+                needs: 75,
+                category: "protein",
+                image: "https://m.media-amazon.com/images/I/81LqFQzJGmL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B000FGDVXY"
+            },
+            {
+                name: "Nature Valley Protein Bars Variety Pack, 15 Count",
+                price: 10.68,
+                priority: "high",
+                needs: 75,
+                category: "protein",
+                image: "https://m.media-amazon.com/images/I/81qGvL3GJGL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HVCGE"
+            },
+            {
+                name: "Amazon Basics Sandwich Storage Bags, 300 Count",
+                price: 6.43,
+                priority: "high",
+                needs: 75,
+                category: "supplies",
+                image: "https://m.media-amazon.com/images/I/81qWM8SHFUL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HXJ0Y"
+            },
+            {
+                name: "Dole Fruit Bowls Mandarin Oranges in 100% Juice Snacks, 4oz 12 Total Cups",
+                price: 7.97,
+                priority: "high",
+                needs: 75,
+                category: "fruit",
+                image: "https://m.media-amazon.com/images/I/81RJ7EfyBOL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HXJXA"
+            },
+            {
+                name: "Nature Valley Granola Bars 48 Count Value Box (Peanut 1.2 oz)",
+                price: 9.85,
+                priority: "high",
+                needs: 60,
+                category: "granola",
+                image: "https://m.media-amazon.com/images/I/81jT0YPyZZL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B004D4R1PA"
+            },
+            {
+                name: "Zbar - Chocolate Brownie - Soft-Baked Energy Snack Bars - 24 Pack",
+                price: 19.94,
+                priority: "high",
+                needs: 50,
+                category: "protein",
+                image: "https://m.media-amazon.com/images/I/81LqFQzJGmL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B000FGDW0A"
+            },
+            {
+                name: "Dole Diced Peaches in 100% Juice - 12 Pack",
+                price: 9.74,
+                priority: "high",
+                needs: 50,
+                category: "fruit",
+                image: "https://m.media-amazon.com/images/I/81RJ7EfyBOL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HXJXA"
+            },
+            {
+                name: "GoGo squeeZ Applesauce and Fruit Puree Variety Pack, 3.2 oz (Pack of 20)",
+                price: 13.29,
+                priority: "high",
+                needs: 50,
+                category: "applesauce",
+                image: "https://m.media-amazon.com/images/I/81qWKJ6KFUL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HYIXU"
+            },
+            {
+                name: "GoGo squeeZ Applesauce and Fruit Puree, Apple Apple, 3.2 oz (Pack of 18)",
+                price: 10.49,
+                priority: "high",
+                needs: 50,
+                category: "applesauce",
+                image: "https://m.media-amazon.com/images/I/81qWKJ6KFUL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HYIXU"
+            },
+            {
+                name: "Nature's Bakery Whole Wheat Fig Bars, Apple Cinnamon, Real Fruit - 12 Twin Packs",
+                price: 8.06,
+                priority: "high",
+                needs: 45,
+                category: "granola",
+                image: "https://m.media-amazon.com/images/I/81LqFQzJGmL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HYIXA"
+            },
+            {
+                name: "Del Monte Fruit Cups Variety Pack, Diced Peaches, Diced Pears, Mandarin Oranges - 12 Pack",
+                price: null,
+                priority: "high",
+                needs: 45,
+                category: "fruit",
+                image: "https://m.media-amazon.com/images/I/81RJ7EfyBOL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HXJXA"
+            },
+            {
+                name: "Nature Valley Crunchy Oats 'n Honey Granola Bars, 60 Bars",
+                price: 9.85,
+                priority: "high",
+                needs: 30,
+                category: "granola",
+                image: "https://m.media-amazon.com/images/I/81qGvL3GJGL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HVCGE"
+            },
+            {
+                name: "Nature's Bakery Whole Wheat Fig Bars, Blueberry, Real Fruit - 12 Twin Packs",
+                price: null,
+                priority: "high",
+                needs: 30,
+                category: "granola",
+                image: "https://m.media-amazon.com/images/I/81LqFQzJGmL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HYIXA"
+            },
+            {
+                name: "KIND Nut Bars, Cranberry Almond, Dark Chocolate Nuts & Sea Salt - 12 Count",
+                price: 16.99,
+                priority: "high",
+                needs: 25,
+                category: "protein",
+                image: "https://m.media-amazon.com/images/I/81qWM8SHFUL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HXJ0Y"
+            },
+            {
+                name: "Nature's Bakery Whole Wheat Fig Bars, Real Fruit, Strawberry, 12 Twin packs",
+                price: 8.06,
+                priority: "high",
+                needs: 25,
+                category: "granola",
+                image: "https://m.media-amazon.com/images/I/81LqFQzJGmL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HYIXA"
+            },
+            {
+                name: "Dole Fruit Bowls No Sugar Added Snacks, Diced Peaches 4oz 24 Cups",
+                price: null,
+                priority: "high",
+                needs: 25,
+                category: "fruit",
+                image: "https://m.media-amazon.com/images/I/81RJ7EfyBOL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HXJXA"
+            },
+            {
+                name: "LARABAR Fruit & Nut Bars Variety Pack 18 Count - Vegan Gluten Free",
+                price: 18.99,
+                priority: "high",
+                needs: 25,
+                category: "protein",
+                image: "https://m.media-amazon.com/images/I/81qWM8SHFUL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HXJ0Y"
+            },
+            {
+                name: "Zbar Protein - Chocolate Chip, Chocolate Mint, and Cookies 'n Creme - Variety Pack - 18 Pack",
+                price: null,
+                priority: "high",
+                needs: 25,
+                category: "protein",
+                image: "https://m.media-amazon.com/images/I/81LqFQzJGmL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B000FGDVXY"
+            },
+            {
+                name: "Dole Fruit Bowls No Sugar Added Snacks, Mandarin Oranges 4oz 24 Cups",
+                price: null,
+                priority: "high",
+                needs: 20,
+                category: "fruit",
+                image: "https://m.media-amazon.com/images/I/81RJ7EfyBOL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HXJXA"
+            },
+            {
+                name: "CLIF BAR - Chocolate Chip - Made with Organic Oats - 12 Pack",
+                price: null,
+                priority: "high",
+                needs: 15,
+                category: "protein",
+                image: "https://m.media-amazon.com/images/I/81xJ7q7BVIL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B000F7PBLU"
+            },
+            {
+                name: "Mott's Applesauce, 4 Oz Cups, 18 Count, No Artificial Flavors",
+                price: 7.58,
+                priority: "high",
+                needs: 130,
+                category: "applesauce",
+                image: "https://m.media-amazon.com/images/I/81LqFQzJGmL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HYIXA"
+            },
+            {
+                name: "Mott's No Sugar Added Applesauce, 3.9 Oz Cups, 72 Count (12 Packs Of 6)",
+                price: 16.56,
+                priority: "high",
+                needs: 10,
+                category: "applesauce",
+                image: "https://m.media-amazon.com/images/I/81LqFQzJGmL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HYIXA"
+            },
+            {
+                name: "Mott's Mighty Honeycrisp Apple Applesauce, 3.9 Oz Cups, 72 Count (12 Packs Of 6)",
+                price: null,
+                priority: "high",
+                needs: 10,
+                category: "applesauce",
+                image: "https://m.media-amazon.com/images/I/81LqFQzJGmL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B00N8HYIXA"
+            },
+            {
+                name: "Nature Valley Granola Bars 48 Count Value Box (Peanut 1.2 oz)",
+                price: null,
+                priority: "high",
+                needs: 10,
+                category: "granola",
+                image: "https://m.media-amazon.com/images/I/81jT0YPyZZL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B004D4R1PA"
+            },
+            {
+                name: "CLIF BAR - White Chocolate Macadamia Nut Flavor - 12 Pack",
+                price: null,
+                priority: "high",
+                needs: 10,
+                category: "protein",
+                image: "https://m.media-amazon.com/images/I/81xJ7q7BVIL._AC_SL1500_.jpg",
+                link: "https://www.amazon.com/dp/B000F7PBLU"
+            }
+        ];
+
+        // Create item card HTML
+        function createItemCard(item) {
+            const priceDisplay = item.price ? `$${item.price.toFixed(2)}` : 'See price';
+            const categoryEmoji = {
+                'protein': '💪',
+                'fruit': '🍎',
+                'granola': '🌾',
+                'applesauce': '🍏',
+                'supplies': '📦'
+            };
+
+            return `
+                <div class="item-card" data-category="${item.category}" data-priority="${item.priority}">
+                    <img src="${item.image}" alt="${item.name}" class="item-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23ddd%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2218%22 text-anchor=%22middle%22 alignment-baseline=%22middle%22 font-family=%22monospace, sans-serif%22 fill=%22%23999%22%3EImage%3C/text%3E%3C/svg%3E'">
+                    <div class="item-content">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-badges">
+                            ${item.priority === 'highest' ? '<span class="badge badge-priority">HIGHEST PRIORITY</span>' : ''}
+                            ${item.needs ? `<span class="badge badge-needs">Needs ${item.needs}</span>` : ''}
+                            <span class="badge badge-category">${categoryEmoji[item.category]} ${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</span>
+                        </div>
+                        <div class="item-price">${priceDisplay}</div>
+                        <a href="${item.link}" target="_blank" class="item-button">Donate This Item →</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render items
+        function renderItems() {
+            const highestPriority = document.getElementById('highest-priority');
+            const runningLow = document.getElementById('running-low');
+            const allItems = document.getElementById('all-items');
+
+            // Highest priority items
+            const highest = wishlistItems.filter(item => item.priority === 'highest');
+            highestPriority.innerHTML = highest.map(createItemCard).join('');
+
+            // Running low (needs >= 50)
+            const low = wishlistItems.filter(item => item.needs && item.needs >= 50 && item.priority !== 'highest');
+            runningLow.innerHTML = low.map(createItemCard).join('');
+
+            // All other items
+            const other = wishlistItems.filter(item => 
+                item.priority !== 'highest' && (!item.needs || item.needs < 50)
+            );
+            allItems.innerHTML = other.map(createItemCard).join('');
+        }
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+                
+                // Update active button
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Filter items
+                const allCards = document.querySelectorAll('.item-card');
+                allCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Lunch builder interactivity
+        const lunchSlots = document.querySelectorAll('.lunch-slot');
+        lunchSlots.forEach(slot => {
+            slot.addEventListener('click', () => {
+                const category = slot.dataset.category;
+                
+                // Toggle filled state
+                slot.classList.toggle('filled');
+
+                // Find and click the matching filter button
+                const filterBtn = document.querySelector(`.filter-btn[data-filter="${category}"]`);
+                if (filterBtn && !slot.classList.contains('filled')) {
+                    filterBtn.click();
+                }
+
+                // Scroll to items
+                if (!slot.classList.contains('filled')) {
+                    document.querySelector('.filters').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Initialize
+        renderItems();
+    </script>
+</body>
+</html>
