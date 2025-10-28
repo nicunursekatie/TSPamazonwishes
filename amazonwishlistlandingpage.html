@@ -369,6 +369,37 @@
             text-decoration: underline;
         }
 
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #FBAD3F;
+            color: #333;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s;
+            z-index: 1000;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        .back-to-top:hover {
+            background: #e99d2d;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top.show {
+            display: flex;
+        }
+
         @media (max-width: 768px) {
             .logo {
                 max-width: 300px;
@@ -403,7 +434,9 @@
 </head>
 <body>
     <div class="header">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="The Sandwich Project" class="logo" id="logo">
+        <div class="logo-text">
+            <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">🥪 The Sandwich Project</h1>
+        </div>
         <div class="tagline">Feed a child. Change a life.</div>
         <div class="subtitle">Every donation provides nutritious meals for Metro Atlanta families facing food insecurity</div>
     </div>
@@ -502,16 +535,15 @@
         </div>
     </div>
 
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
     <div class="footer">
         <p><strong>The Sandwich Project</strong> | 501(c)(3) Non-Profit Organization</p>
         <p style="margin-top: 0.5rem;">Learn more at <a href="https://www.thesandwichproject.org" target="_blank">thesandwichproject.org</a></p>
     </div>
 
     <script>
-        // Load logo
-        const logoImg = document.getElementById('logo');
-        logoImg.src = 'LOGOS/TSP_reverse_transparent.png';
-
         // Wishlist data with categories
         const wishlistItems = [
             {
@@ -858,6 +890,27 @@
                 if (!slot.classList.contains('filled')) {
                     document.querySelector('.filters').scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
+            });
+        });
+
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        // Smooth scroll to top when button is clicked
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
 
